@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Firebase yapılandırmasını yükle
+  final String jsonString = await rootBundle.loadString('assets/firebase_config.json');
+  final Map<String, dynamic> config = json.decode(jsonString);
+  
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyCPenPbBsuNa4eVuGrXD_GTUBGAqGNIOXs',
-      appId: '1:528885116385:android:7bd42326bd2515776eb6a0',
-      messagingSenderId: '528885116385',
-      projectId: 'final-odevi-e6200',
-      storageBucket: 'final-odevi-e6200.applestorage.app',
+    options: FirebaseOptions(
+      apiKey: config['apiKey'],
+      appId: config['appId'],
+      messagingSenderId: config['messagingSenderId'],
+      projectId: config['projectId'],
+      storageBucket: config['storageBucket'],
     ),
   );
   runApp(const MyApp());
