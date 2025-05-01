@@ -1,16 +1,36 @@
-# final_odevi
+# TODO List Uygulaması (Flutter + Firebase)
 
-A new Flutter project.
+Bu proje, Final Mobil Programlama Dersi kapsamında Flutter ve Firebase kullanılarak geliştirilmiş bir TODO listesi uygulamasıdır. Kullanıcılar görev ekleyebilir, tamamlanan görevleri işaretleyebilir ve tüm veriler Firestore veritabanında **gerçek zamanlı** olarak güncellenir.
 
-## Getting Started
+## 🔧 Kullanılan Teknolojiler
 
-This project is a starting point for a Flutter application.
+- Flutter
+- Firebase Firestore
+- DatePicker
+- DropdownButton (varsayılan Flutter ikonları)
+- BottomSheet Modal
+- Checkbox
 
-A few resources to get you started if this is your first Flutter project:
+## 📱 Özellikler
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Gerçek zamanlı güncelleme:** Firestore üzerinde yapılan tüm değişiklikler anlık olarak kullanıcı arayüzünde yansıtılır.
+- **Bottom Modal** kullanarak yeni görev ekleme
+- Görev oluşturulurken kullanıcıdan şu bilgiler alınır:
+  - **İkon:** Sabit bir listedeki 10 Flutter varsayılan ikonundan seçim yapılır (DropdownButton ile)
+  - **Başlık**
+  - **Alt Başlık (İçerik bilgisi)**
+  - **Zaman bilgisi** (DatePicker ile seçilir)
+- **Veriler Firestore’a kaydedilir.**
+- Kullanıcı sadece belirlenen 10 ikondan seçim yapabilir.
+- Firestore’dan veri çekilirken sadece bu ikonlar dikkate alınır.
+- Her görev için bir **Checkbox** bulunur:
+  - Checkbox işaretlendiğinde görev başlığı **üstü çizili** hale gelir ve veritabanı güncellenir.
+  - Checkbox kaldırıldığında başlık normale döner ve veritabanı yeniden güncellenir.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📝 Kurulum ve Kullanım
+
+1. Firebase hesabı oluşturun ve bir Firestore projesi açın.
+2. Flutter projenizi bu Firebase projesine bağlayın.
+3. Gerekli bağımlılıkları yükleyin:
+   ```bash
+   flutter pub get
